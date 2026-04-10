@@ -5,7 +5,6 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
   const navItems = [
     { name: 'Dashboard', path: '/', icon: <LayoutDashboard size={20} /> },
     { name: 'Announcements', path: '/announcements', icon: <Megaphone size={20} /> },
-    { name: 'Users', path: '/users', icon: <Users size={20} /> },
     { name: 'Clubs', path: '/clubs', icon: <Grid size={20} /> },
     { name: 'Events', path: '/events', icon: <Calendar size={20} /> },
     { name: 'Calendar', path: '/calendar', icon: <CalendarDays size={20} /> },
