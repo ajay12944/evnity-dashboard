@@ -38,7 +38,7 @@ const DataTable = ({ columns, data, onEdit, onDelete, customActions }) => {
             data.map((row) => (
               <tr key={row.id} className="hover:bg-indigo-50/30 transition-colors group">
                 {columns.map((col, index) => (
-                  <td key={index} className="px-6 py-5 whitespace-nowrap text-sm text-gray-700 font-medium tracking-tight">
+                  <td key={index} className={`px-6 py-5 text-sm text-gray-700 font-medium tracking-tight ${col.className || 'whitespace-nowrap'}`}>
                     {col.render ? col.render(row) : row[col.accessor]}
                   </td>
                 ))}

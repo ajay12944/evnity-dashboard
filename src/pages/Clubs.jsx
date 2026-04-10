@@ -36,9 +36,13 @@ const Clubs = () => {
     }
   };
 
-  const columns = [
+  const baseColumns = [
     { header: 'Club Name', render: (row) => <span className="font-bold text-gray-900">{row.name}</span> },
-    { header: 'Description', render: (row) => <span className="text-gray-500 font-normal">{row.description}</span> },
+    { 
+      header: 'Description', 
+      className: 'whitespace-normal min-w-[250px] max-w-sm break-words',
+      render: (row) => <span className="text-gray-500 font-normal line-clamp-3">{row.description || 'Not provided'}</span> 
+    },
     { header: 'Status', render: (row) => <StatusBadge status={row.status} /> },
     { header: 'Created', render: (row) => {
         if (!row.createdAt) return 'N/A';
@@ -50,6 +54,8 @@ const Clubs = () => {
         }
     }}
   ];
+
+  const columns = baseColumns.filter(col => filter === 'All' ? true : col.header !== 'Description');
 
   const ActionButtons = (row) => (
     <div className="flex justify-end space-x-2">
@@ -98,7 +104,7 @@ const Clubs = () => {
           <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-indigo-500"></div>
         </div>
       ) : (
-        <DataTable columns={columns} data={filteredData} customActions={ActionButtons} />
+        <DataTable columns={columns} data={filteredData} customActions={filter === 'All' ? undefined : ActionButtons} />
       )}
     </div>
   );
